@@ -3,66 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HQ Background Remover</title>
+    <title>Background Remover</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
-        .container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .upload-area {
-            border: 2px dashed #3498db;
-            border-radius: 5px;
-            padding: 30px;
+            border: 2px dashed #ccc;
+            padding: 20px;
             text-align: center;
             margin-bottom: 20px;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-        .upload-area:hover {
-            background-color: #eaf2f8;
         }
         #fileInput {
             display: none;
         }
         .preview-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-            justify-content: center;
+            justify-content: space-between;
+            margin-top: 20px;
         }
         .preview-box {
-            flex: 1;
-            min-width: 250px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            background-color: white;
-        }
-        .preview-box h3 {
-            margin-top: 0;
-            color: #3498db;
+            width: 30%;
             text-align: center;
         }
         .preview-img {
-            width: 100%;
-            height: auto;
-            max-height: 300px;
-            object-fit: contain;
-            border: 1px solid #eee;
+            max-width: 100%;
+            max-height: 200px;
             background: 
                 linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%),
                 linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%);
@@ -70,31 +40,27 @@
             background-position: 0 0, 10px 10px;
         }
         button {
-            background-color: #3498db;
+            background-color: #4CAF50;
             color: white;
+            padding: 10px 15px;
             border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            margin: 10px auto;
             display: block;
-            margin: 20px auto;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #2980b9;
         }
         button:disabled {
-            background-color: #95a5a6;
+            background-color: #cccccc;
             cursor: not-allowed;
         }
         .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
             margin: 20px auto;
             display: none;
         }
@@ -102,74 +68,33 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .progress-container {
-            width: 100%;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            margin: 20px 0;
-            display: none;
-        }
-        .progress-bar {
-            width: 0%;
-            height: 30px;
-            background-color: #2ecc71;
-            border-radius: 5px;
-            text-align: center;
-            line-height: 30px;
-            color: white;
-            transition: width 0.3s;
-        }
-        .instructions {
-            background-color: #fffde7;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            border-left: 4px solid #ffd600;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>High Quality Background Remover</h1>
-        
-        <div class="instructions">
-            <h3>How it works:</h3>
-            <ol>
-                <li>Upload an image (PNG or JPG)</li>
-                <li>We process it through remove.bg API</li>
-                <li>We enhance the quality using your original image</li>
-                <li>Download your high-quality cutout!</li>
-            </ol>
+    <h1>Background Remover</h1>
+    
+    <div class="upload-area" id="dropZone">
+        <p>Drag & drop your image here or click to select</p>
+        <input type="file" id="fileInput" accept="image/*">
+    </div>
+    
+    <button id="processBtn" disabled>Process Image</button>
+    
+    <div class="loader" id="loader"></div>
+    
+    <div class="preview-container">
+        <div class="preview-box">
+            <h3>Original</h3>
+            <img id="originalPreview" class="preview-img" src="" alt="Original">
         </div>
-
-        <div class="upload-area" id="dropZone">
-            <h2>📁 Drag & Drop Your Image Here</h2>
-            <p>or click to select a file</p>
-            <input type="file" id="fileInput" accept="image/*">
+        <div class="preview-box">
+            <h3>API Output</h3>
+            <img id="apiPreview" class="preview-img" src="" alt="API Output">
         </div>
-
-        <div class="progress-container" id="progressContainer">
-            <div class="progress-bar" id="progressBar">0%</div>
-        </div>
-
-        <div class="loader" id="loader"></div>
-
-        <button id="processBtn" disabled>Process Image</button>
-
-        <div class="preview-container">
-            <div class="preview-box">
-                <h3>Original Image</h3>
-                <img id="originalPreview" class="preview-img" src="" alt="Original image">
-            </div>
-            <div class="preview-box">
-                <h3>API Output</h3>
-                <img id="apiPreview" class="preview-img" src="" alt="API output">
-            </div>
-            <div class="preview-box">
-                <h3>Enhanced Result</h3>
-                <img id="resultPreview" class="preview-img" src="" alt="Enhanced result">
-                <a id="downloadLink" style="display: none; margin-top: 10px; text-align: center; display: block;" href="#" download>⬇️ Download Enhanced Image</a>
-            </div>
+        <div class="preview-box">
+            <h3>Result</h3>
+            <img id="resultPreview" class="preview-img" src="" alt="Result">
+            <a id="downloadLink" style="display: none; margin-top: 10px;" href="#" download>Download</a>
         </div>
     </div>
 
@@ -183,34 +108,27 @@
             const apiPreview = document.getElementById('apiPreview');
             const resultPreview = document.getElementById('resultPreview');
             const downloadLink = document.getElementById('downloadLink');
-            const progressContainer = document.getElementById('progressContainer');
-            const progressBar = document.getElementById('progressBar');
             
-            let originalImageData = null;
-            let apiImageData = null;
-            
-            // Configure API (use your actual API key)
             const API_KEY = "MSQoUvrzSHHwEQs6CLcYrRJr";
             const API_URL = "https://api.remove.bg/v1.0/removebg";
             
-            // Handle drag and drop
+            let originalImageData = null;
+            
+            // Handle file selection
             dropZone.addEventListener('click', () => fileInput.click());
             
-            ['dragover', 'dragenter'].forEach(event => {
-                dropZone.addEventListener(event, (e) => {
-                    e.preventDefault();
-                    dropZone.style.backgroundColor = '#eaf2f8';
-                });
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.style.backgroundColor = '#f0f0f0';
             });
             
-            ['dragleave', 'dragend', 'drop'].forEach(event => {
-                dropZone.addEventListener(event, (e) => {
-                    e.preventDefault();
-                    dropZone.style.backgroundColor = '';
-                });
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.style.backgroundColor = '';
             });
             
             dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.style.backgroundColor = '';
                 if (e.dataTransfer.files.length) {
                     fileInput.files = e.dataTransfer.files;
                     handleFileSelect(e.dataTransfer.files[0]);
@@ -227,21 +145,18 @@
             
             function handleFileSelect(file) {
                 if (!file.type.match('image.*')) {
-                    alert('Please select an image file (JPEG or PNG)');
+                    alert('Please select an image file');
                     return;
                 }
                 
-                // Reset previous results
-                apiPreview.src = '';
-                resultPreview.src = '';
-                downloadLink.style.display = 'none';
-                
-                // Preview original image
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     originalPreview.src = e.target.result;
                     originalImageData = e.target.result;
                     processBtn.disabled = false;
+                    apiPreview.src = '';
+                    resultPreview.src = '';
+                    downloadLink.style.display = 'none';
                 };
                 reader.readAsDataURL(file);
             }
@@ -251,19 +166,12 @@
                 
                 processBtn.disabled = true;
                 loader.style.display = 'block';
-                progressContainer.style.display = 'block';
                 
                 try {
-                    updateProgress(10, "Preparing image...");
-                    
-                    // Convert original image to Blob for API
-                    const originalBlob = await fetch(originalImageData).then(r => r.blob());
-                    
-                    updateProgress(20, "Calling remove.bg API...");
-                    
                     // Step 1: Call remove.bg API
+                    const blob = await fetch(originalImageData).then(r => r.blob());
                     const formData = new FormData();
-                    formData.append('image_file', originalBlob);
+                    formData.append('image_file', blob);
                     formData.append('size', 'auto');
                     
                     const apiResponse = await fetch(API_URL, {
@@ -274,94 +182,60 @@
                         body: formData
                     });
                     
-                    if (!apiResponse.ok) {
-                        throw new Error(`API Error: ${apiResponse.status} - ${await apiResponse.text()}`);
-                    }
-                    
-                    updateProgress(60, "Processing API result...");
+                    if (!apiResponse.ok) throw new Error('API request failed');
                     
                     const apiBlob = await apiResponse.blob();
-                    apiImageData = URL.createObjectURL(apiBlob);
-                    apiPreview.src = apiImageData;
+                    const apiImageUrl = URL.createObjectURL(apiBlob);
+                    apiPreview.src = apiImageUrl;
                     
-                    updateProgress(70, "Enhancing quality...");
-                    
-                    // Step 2: Quality enhancement
-                    const resultDataUrl = await enhanceQuality(originalImageData, apiImageData);
-                    
-                    updateProgress(90, "Finalizing...");
-                    
-                    // Display result
+                    // Step 2: Enhance quality with edge smoothing
+                    const resultDataUrl = await enhanceQuality(originalImageData, apiImageUrl);
                     resultPreview.src = resultDataUrl;
                     downloadLink.href = resultDataUrl;
-                    downloadLink.download = 'enhanced_' + fileInput.files[0].name.replace(/\.[^/.]+$/, '') + '.png';
+                    downloadLink.download = 'removed_bg_' + fileInput.files[0].name.replace(/\.[^/.]+$/, '') + '.png';
                     downloadLink.style.display = 'block';
-                    
-                    updateProgress(100, "Done!");
                     
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Error processing image: ' + error.message);
+                    alert('Error: ' + error.message);
                 } finally {
                     loader.style.display = 'none';
-                    setTimeout(() => {
-                        progressContainer.style.display = 'none';
-                    }, 1000);
+                    processBtn.disabled = false;
                 }
             }
             
             function enhanceQuality(originalDataUrl, apiDataUrl) {
                 return new Promise((resolve) => {
-                    // Create canvas elements
-                    const originalCanvas = document.createElement('canvas');
-                    const apiCanvas = document.createElement('canvas');
-                    const resultCanvas = document.createElement('canvas');
-                    
                     const originalImg = new Image();
                     const apiImg = new Image();
                     
-                    // Load images
                     originalImg.onload = function() {
                         apiImg.onload = function() {
-                            // Set canvas sizes
-                            originalCanvas.width = originalImg.width;
-                            originalCanvas.height = originalImg.height;
-                            apiCanvas.width = originalImg.width;
-                            apiCanvas.height = originalImg.height;
+                            const canvas = document.createElement('canvas');
+                            const resultCanvas = document.createElement('canvas');
+                            canvas.width = originalImg.width;
+                            canvas.height = originalImg.height;
                             resultCanvas.width = originalImg.width;
                             resultCanvas.height = originalImg.height;
                             
-                            // Draw images to canvases
-                            const originalCtx = originalCanvas.getContext('2d');
-                            originalCtx.drawImage(originalImg, 0, 0);
+                            // Draw API image to get alpha mask
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(apiImg, 0, 0, canvas.width, canvas.height);
+                            const apiData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                             
-                            const apiCtx = apiCanvas.getContext('2d');
-                            apiCtx.drawImage(apiImg, 0, 0, originalImg.width, originalImg.height);
-                            
-                            // Get image data
-                            const apiImageData = apiCtx.getImageData(0, 0, apiCanvas.width, apiCanvas.height);
-                            
-                            // Create mask from API result (transparent pixels)
-                            const mask = new Uint8Array(apiImageData.data.length / 4);
-                            for (let i = 0; i < apiImageData.data.length; i += 4) {
-                                // Consider pixel transparent if alpha < 128
-                                mask[i/4] = apiImageData.data[i+3] < 128 ? 0 : 255;
-                            }
+                            // Create smoothed mask
+                            const smoothedMask = createSmoothedMask(apiData);
                             
                             // Apply mask to original image
                             const resultCtx = resultCanvas.getContext('2d');
                             resultCtx.drawImage(originalImg, 0, 0);
+                            const resultData = resultCtx.getImageData(0, 0, canvas.width, canvas.height);
                             
-                            const resultImageData = resultCtx.getImageData(0, 0, resultCanvas.width, resultCanvas.height);
-                            
-                            // Apply mask by setting alpha channel
-                            for (let i = 0; i < resultImageData.data.length; i += 4) {
-                                resultImageData.data[i+3] = mask[i/4];
+                            for (let i = 0; i < resultData.data.length; i += 4) {
+                                resultData.data[i+3] = smoothedMask[i/4];
                             }
                             
-                            resultCtx.putImageData(resultImageData, 0, 0);
-                            
-                            // Return as Data URL
+                            resultCtx.putImageData(resultData, 0, 0);
                             resolve(resultCanvas.toDataURL('image/png'));
                         };
                         apiImg.src = apiDataUrl;
@@ -370,9 +244,41 @@
                 });
             }
             
-            function updateProgress(percent, message) {
-                progressBar.style.width = percent + '%';
-                progressBar.textContent = message || (percent + '%');
+            function createSmoothedMask(apiImageData) {
+                const width = apiImageData.width;
+                const height = apiImageData.height;
+                const mask = new Uint8Array(width * height);
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = width;
+                tempCanvas.height = height;
+                const tempCtx = tempCanvas.getContext('2d');
+                
+                // Create initial mask from alpha channel
+                for (let i = 0; i < apiImageData.data.length; i += 4) {
+                    mask[i/4] = apiImageData.data[i+3];
+                }
+                
+                // Create image data for blurring
+                const tempImageData = tempCtx.createImageData(width, height);
+                for (let i = 0; i < mask.length; i++) {
+                    tempImageData.data[i*4] = mask[i];
+                    tempImageData.data[i*4+1] = mask[i];
+                    tempImageData.data[i*4+2] = mask[i];
+                    tempImageData.data[i*4+3] = 255;
+                }
+                tempCtx.putImageData(tempImageData, 0, 0);
+                
+                // Apply blur for smoothing
+                tempCtx.filter = 'blur(2px)';
+                const blurred = tempCtx.getImageData(0, 0, width, height);
+                
+                // Create final smoothed mask
+                const smoothedMask = new Uint8Array(width * height);
+                for (let i = 0; i < blurred.data.length; i += 4) {
+                    smoothedMask[i/4] = blurred.data[i]; // Use red channel (same as alpha)
+                }
+                
+                return smoothedMask;
             }
         });
     </script>
