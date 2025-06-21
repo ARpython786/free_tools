@@ -976,7 +976,7 @@
                 <i class="fas fa-cloud-upload-alt"></i>
                 <h3>Upload Your Image</h3>
                 <p>Drag & drop your image here or click to browse files</p>
-                <p class="file-types">Supports: JPG, PNG, JPEG (Max 5MB)</p>
+                <p class="file-types">Supports: JPG, PNG, JPEG</p>
                 <div class="selected-file" id="selectedFileName"></div>
                 <input type="file" id="fileInput" accept="image/*">
             </div>
@@ -1160,7 +1160,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes! Our basic background removal service is completely free with no hidden charges. We offer premium features for professional users, but the core functionality is available at no cost.</p>
+                    <p>Yes! Our background removal service is completely free with no hidden charges or limitations. Use it as much as you need!</p>
                 </div>
             </div>
             
@@ -1180,7 +1180,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>The free version supports images up to 5MB. For larger files up to 25MB, consider our Pro version which also offers higher resolution outputs.</p>
+                    <p>No! Unlike other services, we don't impose any file size limits. Process images of any size completely free.</p>
                 </div>
             </div>
             
@@ -1190,7 +1190,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Your privacy is important to us. All images are processed in memory and automatically deleted from our servers after 1 hour. We never use your images for any other purpose.</p>
+                    <p>Your privacy is important to us. All images are processed in memory and automatically deleted from our servers after processing. We never use your images for any other purpose.</p>
                 </div>
             </div>
             
@@ -1200,7 +1200,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Absolutely! You retain full rights to all images you process with our tool. Feel free to use them in any personal or commercial projects.</p>
+                    <p>Absolutely! You retain full rights to all images you process with our tool. Feel free to use them in any personal or commercial projects without restrictions.</p>
                 </div>
             </div>
         </div>
@@ -1337,11 +1337,6 @@
             function handleFileSelect(file) {
                 if (!file.type.match('image.*')) {
                     showAlert('Please select an image file (JPG, PNG, JPEG)');
-                    return;
-                }
-                
-                if (file.size > 5 * 1024 * 1024) {
-                    showAlert('File size exceeds 5MB limit. Please choose a smaller image.');
                     return;
                 }
                 
