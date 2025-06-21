@@ -264,6 +264,16 @@
             color: var(--gray);
         }
         
+        .selected-file {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            display: none;
+        }
+        
         #fileInput {
             display: none;
         }
@@ -318,6 +328,49 @@
             height: 100%;
             object-fit: contain;
             background-color: white;
+        }
+        
+        /* Enhancement Controls */
+        .enhancement-controls {
+            margin-top: 15px;
+            text-align: left;
+        }
+        
+        .enhancement-controls label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .enhancement-controls input[type="range"] {
+            width: 100%;
+            margin-bottom: 15px;
+            -webkit-appearance: none;
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 3px;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .enhancement-controls input[type="range"]:hover {
+            background: var(--gray);
+        }
+        
+        .enhancement-controls input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .enhancement-controls input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
         }
         
         /* Buttons */
@@ -924,6 +977,7 @@
                 <h3>Upload Your Image</h3>
                 <p>Drag & drop your image here or click to browse files</p>
                 <p class="file-types">Supports: JPG, PNG, JPEG (Max 5MB)</p>
+                <div class="selected-file" id="selectedFileName"></div>
                 <input type="file" id="fileInput" accept="image/*">
             </div>
             
@@ -956,6 +1010,16 @@
                         <h3>Enhanced</h3>
                         <div class="preview-img-container">
                             <img id="resultPreview" class="preview-img" src="" alt="Enhanced Result">
+                        </div>
+                        <div class="enhancement-controls">
+                            <div>
+                                <label for="sharpnessSlider" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Sharpness</label>
+                                <input type="range" id="sharpnessSlider" min="0" max="200" value="100" style="width: 100%;">
+                            </div>
+                            <div>
+                                <label for="saturationSlider" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Color Saturation</label>
+                                <input type="range" id="saturationSlider" min="0" max="200" value="100" style="width: 100%;">
+                            </div>
                         </div>
                         <a id="downloadLink" class="btn btn-outline" style="display: none; margin-top: 15px;" href="#" download>
                             <i class="fas fa-download"></i> Download PNG
@@ -1217,6 +1281,7 @@
             // Background Remover Tool Functionality
             const fileInput = document.getElementById('fileInput');
             const dropZone = document.getElementById('dropZone');
+            const selectedFileName = document.getElementById('selectedFileName');
             const processBtn = document.getElementById('processBtn');
             const loader = document.getElementById('loader');
             const progressContainer = document.getElementById('progressContainer');
@@ -1226,11 +1291,15 @@
             const apiPreview = document.getElementById('apiPreview');
             const resultPreview = document.getElementById('resultPreview');
             const downloadLink = document.getElementById('downloadLink');
+            const sharpnessSlider = document.getElementById('sharpnessSlider');
+            const saturationSlider = document.getElementById('saturationSlider');
             
             const API_KEY = "MSQoUvrzSHHwEQs6CLcYrRJr";
             const API_URL = "https://api.remove.bg/v1.0/removebg";
             
             let originalImageData = null;
+            let currentProcessedImage = null;
+            let enhancementTimeout = null;
             
             // Handle file selection
             dropZone.addEventListener('click', () => fileInput.click());
@@ -1261,6 +1330,10 @@
             
             processBtn.addEventListener('click', processImage);
             
+            // Real-time enhancement controls
+            sharpnessSlider.addEventListener('input', applyImageEnhancements);
+            saturationSlider.addEventListener('input', applyImageEnhancements);
+            
             function handleFileSelect(file) {
                 if (!file.type.match('image.*')) {
                     showAlert('Please select an image file (JPG, PNG, JPEG)');
@@ -1271,6 +1344,10 @@
                     showAlert('File size exceeds 5MB limit. Please choose a smaller image.');
                     return;
                 }
+                
+                // Show selected file name
+                selectedFileName.textContent = `Selected: ${file.name}`;
+                selectedFileName.style.display = 'block';
                 
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -1323,9 +1400,14 @@
                     // Step 2: Enhance quality with improved edge handling
                     const resultDataUrl = await enhanceWithSmoothEdges(originalImageData, apiImageUrl);
                     resultPreview.src = resultDataUrl;
+                    currentProcessedImage = resultDataUrl;
                     downloadLink.href = resultDataUrl;
                     downloadLink.download = 'removed_bg_' + fileInput.files[0].name.replace(/\.[^/.]+$/, '') + '.png';
                     downloadLink.style.display = 'inline-block';
+                    
+                    // Reset enhancement controls
+                    sharpnessSlider.value = 100;
+                    saturationSlider.value = 100;
                     
                     // Track successful conversion (for analytics)
                     trackConversion();
@@ -1338,6 +1420,75 @@
                     progressContainer.style.display = 'none';
                     processBtn.disabled = false;
                 }
+            }
+            
+            function applyImageEnhancements() {
+                if (!currentProcessedImage) return;
+                
+                // Debounce to prevent too many rapid updates
+                clearTimeout(enhancementTimeout);
+                enhancementTimeout = setTimeout(() => {
+                    const sharpnessValue = parseInt(sharpnessSlider.value) / 100;
+                    const saturationValue = parseInt(saturationSlider.value) / 100;
+                    
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Draw original processed image
+                        ctx.drawImage(img, 0, 0);
+                        
+                        // Apply sharpness
+                        if (sharpnessValue !== 1) {
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            const data = imageData.data;
+                            
+                            // Simple sharpening algorithm
+                            for (let i = 0; i < data.length; i += 4) {
+                                // For each pixel, compare with neighbors and adjust based on sharpness
+                                if (i > 4 && i < data.length - 4) {
+                                    const rDiff = Math.abs(data[i] - data[i-4]);
+                                    const gDiff = Math.abs(data[i+1] - data[i-3]);
+                                    const bDiff = Math.abs(data[i+2] - data[i-2]);
+                                    const diff = (rDiff + gDiff + bDiff) / 3;
+                                    
+                                    const factor = diff * (sharpnessValue - 1) * 0.1;
+                                    data[i] = Math.min(255, Math.max(0, data[i] + factor));
+                                    data[i+1] = Math.min(255, Math.max(0, data[i+1] + factor));
+                                    data[i+2] = Math.min(255, Math.max(0, data[i+2] + factor));
+                                }
+                            }
+                            ctx.putImageData(imageData, 0, 0);
+                        }
+                        
+                        // Apply saturation
+                        if (saturationValue !== 1) {
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            const data = imageData.data;
+                            
+                            for (let i = 0; i < data.length; i += 4) {
+                                const r = data[i];
+                                const g = data[i+1];
+                                const b = data[i+2];
+                                const gray = 0.2989 * r + 0.5870 * g + 0.1140 * b; // Grayscale conversion
+                                
+                                data[i] = Math.min(255, gray + (r - gray) * saturationValue);
+                                data[i+1] = Math.min(255, gray + (g - gray) * saturationValue);
+                                data[i+2] = Math.min(255, gray + (b - gray) * saturationValue);
+                            }
+                            ctx.putImageData(imageData, 0, 0);
+                        }
+                        
+                        // Update the preview and download link
+                        const enhancedDataUrl = canvas.toDataURL('image/png');
+                        resultPreview.src = enhancedDataUrl;
+                        downloadLink.href = enhancedDataUrl;
+                    };
+                    img.src = currentProcessedImage;
+                }, 100);
             }
             
             function simulateProgress() {
