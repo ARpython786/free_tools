@@ -1,52 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- SEO Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online tool to remove backgrounds from images instantly. No registration required. Works with PNG, JPG, JPEG formats.">
-    <meta name="keywords" content="background remover, remove bg, transparent background, image editor, free photo editor">
-    <meta name="author" content="Background Remover Tool">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Free Online Background Remover Tool">
-    <meta property="og:description" content="Remove backgrounds from images automatically in seconds. Download high-quality transparent PNGs.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/background-remover">
-    <meta name="geo.region" content="US">
-    <meta name="geo.placename" content="New York">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <!-- Canonical URL for GEO targeting -->
-    <link rel="canonical" href="https://yourdomain.com/background-remover">
-    
-    <title>Free Online Background Remover Tool | Remove BG from Images Instantly</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Background Remover Tool",
-      "url": "https://yourdomain.com/background-remover",
-      "description": "Free online tool to remove backgrounds from images automatically",
-      "applicationCategory": "ImageEditor",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
-    
+    <title>Free Background Remover Tool - No Limits</title>
     <style>
         :root {
             --primary: #4361ee;
@@ -72,7 +29,7 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: #f5f7ff;
@@ -86,7 +43,6 @@
             padding: 0 20px;
         }
         
-        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -103,7 +59,6 @@
         }
         
         .logo {
-            font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
             display: flex;
@@ -115,53 +70,6 @@
             font-size: 2rem;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        nav ul li a:hover {
-            opacity: 0.9;
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: white;
-            transition: var(--transition);
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 3rem 0 2rem;
@@ -172,51 +80,15 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--dark);
-            font-weight: 700;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        /* Ad Banner - Top */
-        .ad-banner-top {
-            background-color: var(--light-gray);
-            padding: 15px;
-            text-align: center;
-            margin: 1rem 0;
-            border-radius: 8px;
-            border: 1px dashed var(--gray);
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Main Content */
-        .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 2rem 0;
         }
         
         .tool-container {
-            flex: 1;
-            min-width: 300px;
             background: white;
             border-radius: 12px;
             padding: 2rem;
             box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        .tool-container:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-5px);
+            margin: 2rem auto;
+            max-width: 800px;
         }
         
         .upload-area {
@@ -227,155 +99,13 @@
             margin-bottom: 2rem;
             cursor: pointer;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
         
         .upload-area:hover {
             border-color: var(--accent);
-            background-color: rgba(72, 149, 239, 0.05);
         }
         
-        .upload-area.active {
-            border-color: var(--primary);
-            background-color: rgba(67, 97, 238, 0.05);
-        }
-        
-        .upload-area i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .upload-area h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .upload-area p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-        
-        .upload-area .file-types {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .selected-file {
-            margin-top: 1rem;
-            padding: 0.5rem;
-            background-color: rgba(67, 97, 238, 0.1);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: var(--primary-dark);
-            display: none;
-        }
-        
-        #fileInput {
-            display: none;
-        }
-        
-        /* Preview Section */
-        .preview-section {
-            margin-top: 2rem;
-        }
-        
-        .preview-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            justify-content: center;
-        }
-        
-        .preview-box {
-            flex: 1;
-            min-width: 250px;
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            text-align: center;
-        }
-        
-        .preview-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        .preview-img-container {
-            position: relative;
-            width: 100%;
-            padding-top: 100%;
-            background: 
-                linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%),
-                linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .preview-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: white;
-        }
-        
-        /* Enhancement Controls */
-        .enhancement-controls {
-            margin-top: 15px;
-            text-align: left;
-        }
-        
-        .enhancement-controls label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            color: var(--dark);
-        }
-        
-        .enhancement-controls input[type="range"] {
-            width: 100%;
-            margin-bottom: 15px;
-            -webkit-appearance: none;
-            height: 6px;
-            background: var(--light-gray);
-            border-radius: 3px;
-            outline: none;
-            transition: var(--transition);
-        }
-        
-        .enhancement-controls input[type="range"]:hover {
-            background: var(--gray);
-        }
-        
-        .enhancement-controls input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            background: var(--primary);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .enhancement-controls input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-        
-        /* Buttons */
         .btn {
-            display: inline-block;
             background-color: var(--primary);
             color: white;
             padding: 12px 24px;
@@ -383,43 +113,61 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 1rem;
-            font-weight: 500;
-            text-align: center;
             transition: var(--transition);
-            text-decoration: none;
-            margin: 0.5rem 0;
+            display: inline-block;
+            margin-top: 1rem;
         }
         
         .btn:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
         }
         
         .btn:disabled {
             background-color: var(--gray);
             cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
         }
         
-        .btn-block {
-            display: block;
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        
+        .preview-box {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .preview-img-container {
             width: 100%;
+            height: 300px;
+            background: 
+                linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%),
+                linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
         }
         
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+        .preview-img {
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
         }
         
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        /* Loader */
         .loader {
             border: 4px solid rgba(67, 97, 238, 0.1);
             border-top: 4px solid var(--primary);
@@ -436,886 +184,161 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background-color: var(--light-gray);
-            border-radius: 3px;
+        .status-message {
             margin: 1rem 0;
-            overflow: hidden;
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
             display: none;
         }
         
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(to right, var(--accent), var(--primary));
-            width: 0;
-            transition: width 0.3s ease;
+        .success {
+            background-color: rgba(75, 181, 67, 0.2);
+            color: var(--success);
         }
         
-        /* Sidebar */
-        .sidebar {
-            width: 300px;
-            min-width: 300px;
+        .error {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--danger);
         }
         
-        .sidebar-widget {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .sidebar-widget h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light-gray);
-        }
-        
-        /* Features List */
-        .features-list {
-            list-style: none;
-        }
-        
-        .features-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: center;
-        }
-        
-        .features-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .features-list li i {
-            margin-right: 0.75rem;
-            color: var(--primary);
-        }
-        
-        /* Ad Banner - Sidebar */
-        .ad-banner-sidebar {
-            background-color: var(--light-gray);
-            padding: 1rem;
-            text-align: center;
-            border-radius: 8px;
-            min-height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed var(--gray);
-        }
-        
-        /* How It Works Section */
-        .how-it-works {
-            margin: 3rem 0;
-            text-align: center;
-        }
-        
-        .how-it-works h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-        }
-        
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            padding: 2rem 1.5rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(to bottom right, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1.5rem;
-        }
-        
-        .step h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        .step p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            margin: 3rem 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            padding: 3rem 0;
-            color: white;
-        }
-        
-        .testimonials h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .testimonial-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        
-        .testimonial-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .testimonial-text::before,
-        .testimonial-text::after {
-            content: '"';
-            font-size: 2rem;
-            color: rgba(255, 255, 255, 0.3);
-            position: absolute;
-        }
-        
-        .testimonial-text::before {
-            top: -15px;
-            left: -10px;
-        }
-        
-        .testimonial-text::after {
-            bottom: -25px;
-            right: -10px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: white;
-            margin-right: 1rem;
-            overflow: hidden;
-        }
-        
-        .author-info h4 {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .author-info p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-        
-        /* Ad Banner - Bottom */
-        .ad-banner-bottom {
-            background-color: var(--light-gray);
-            padding: 20px;
-            text-align: center;
-            margin: 2rem 0;
-            border-radius: 8px;
-            border: 1px dashed var(--gray);
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            margin: 3rem 0;
-        }
-        
-        .faq h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-        }
-        
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow-sm);
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .faq-question:hover {
-            background-color: rgba(67, 97, 238, 0.05);
-        }
-        
-        .faq-question i {
-            transition: var(--transition);
-        }
-        
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .faq-answer p {
-            padding-bottom: 1.5rem;
-            color: var(--gray);
-        }
-        
-        .faq-item.active .faq-question {
-            background-color: rgba(67, 97, 238, 0.05);
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-        
-        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
-            padding: 3rem 0 1.5rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        
-        .footer-links a {
-            color: var(--light-gray);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
+            padding: 2rem 0;
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--light-gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                order: -1;
-            }
-            
-            .steps {
-                gap: 1.5rem;
-            }
+            margin-top: 3rem;
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0 0.75rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .preview-container {
-                flex-direction: column;
-            }
-            
             .preview-box {
                 min-width: 100%;
             }
-            
-            .testimonial-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .testimonial-card {
-                min-width: 100%;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav {
-                display: none;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .step {
-                min-width: 100%;
-            }
-            
-            .footer-column {
-                min-width: 100%;
-                margin-bottom: 1.5rem;
-            }
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .slide-up {
-            animation: slideUp 0.5s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">
-                <span class="logo-icon"><i class="fas fa-cut"></i></span>
-                <span>BG Remover Pro</span>
+                <span class="logo-icon">✂️</span>
+                <span>Free BG Remover</span>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
     
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 class="slide-up">Remove Image Backgrounds in Seconds</h1>
-            <p class="slide-up">Our AI-powered tool automatically removes backgrounds from your images with perfect precision. No skills required - just upload and download!</p>
-            
-            <!-- Top Ad Banner -->
-            <div class="ad-banner-top fade-in">
-                <p>Advertisement Space</p>
-            </div>
+            <h1>Remove Backgrounds for Free</h1>
+            <p>No credit limits - No API keys - Works entirely in your browser</p>
         </div>
     </section>
     
-    <!-- Main Content -->
-    <div class="container main-content">
-        <!-- Tool Container -->
-        <div class="tool-container fade-in">
+    <div class="container">
+        <div class="tool-container">
             <div class="upload-area" id="dropZone">
-                <i class="fas fa-cloud-upload-alt"></i>
                 <h3>Upload Your Image</h3>
                 <p>Drag & drop your image here or click to browse files</p>
-                <p class="file-types">Supports: JPG, PNG, JPEG</p>
-                <div class="selected-file" id="selectedFileName"></div>
-                <input type="file" id="fileInput" accept="image/*">
+                <p>Supports: JPG, PNG, JPEG</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
             </div>
             
-            <button id="processBtn" class="btn btn-block" disabled>
-                <i class="fas fa-magic"></i> Remove Background
+            <div id="statusMessage" class="status-message"></div>
+            
+            <button id="processBtn" class="btn" disabled>
+                Remove Background
             </button>
-            
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
             
             <div class="loader" id="loader"></div>
             
-            <div class="preview-section" id="previewSection" style="display: none;">
-                <h3>Your Results</h3>
-                <div class="preview-container">
-                    <div class="preview-box">
-                        <h3>Original</h3>
-                        <div class="preview-img-container">
-                            <img id="originalPreview" class="preview-img" src="" alt="Original Image">
-                        </div>
-                    </div>
-                    <div class="preview-box">
-                        <h3>Processed</h3>
-                        <div class="preview-img-container">
-                            <img id="apiPreview" class="preview-img" src="" alt="Processed Image">
-                        </div>
-                    </div>
-                    <div class="preview-box">
-                        <h3>Enhanced</h3>
-                        <div class="preview-img-container">
-                            <img id="resultPreview" class="preview-img" src="" alt="Enhanced Result">
-                        </div>
-                        <div class="enhancement-controls">
-                            <div>
-                                <label for="sharpnessSlider" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Sharpness</label>
-                                <input type="range" id="sharpnessSlider" min="0" max="200" value="100" style="width: 100%;">
-                            </div>
-                            <div>
-                                <label for="saturationSlider" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Color Saturation</label>
-                                <input type="range" id="saturationSlider" min="0" max="200" value="100" style="width: 100%;">
-                            </div>
-                        </div>
-                        <a id="downloadLink" class="btn btn-outline" style="display: none; margin-top: 15px;" href="#" download>
-                            <i class="fas fa-download"></i> Download PNG
-                        </a>
+            <div class="preview-container" id="previewSection" style="display: none;">
+                <div class="preview-box">
+                    <h3>Original Image</h3>
+                    <div class="preview-img-container">
+                        <img id="originalPreview" class="preview-img" src="" alt="Original Image">
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Features Widget -->
-            <div class="sidebar-widget">
-                <h3>Key Features</h3>
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> 100% automatic background removal</li>
-                    <li><i class="fas fa-check-circle"></i> High-resolution downloads</li>
-                    <li><i class="fas fa-check-circle"></i> No registration required</li>
-                    <li><i class="fas fa-check-circle"></i> Works with all image types</li>
-                    <li><i class="fas fa-check-circle"></i> Fast processing (under 5 seconds)</li>
-                    <li><i class="fas fa-check-circle"></i> Secure & private - we don't store your images</li>
-                </ul>
-            </div>
-            
-            <!-- Sidebar Ad Banner -->
-            <div class="sidebar-widget ad-banner-sidebar">
-                <p>Advertisement Space</p>
-            </div>
-            
-            <!-- Tips Widget -->
-            <div class="sidebar-widget">
-                <h3>Pro Tips</h3>
-                <ul class="features-list">
-                    <li><i class="fas fa-lightbulb"></i> Use high-contrast images for best results</li>
-                    <li><i class="fas fa-lightbulb"></i> Avoid complex backgrounds when possible</li>
-                    <li><i class="fas fa-lightbulb"></i> For product photos, use plain backgrounds</li>
-                    <li><i class="fas fa-lightbulb"></i> Save as PNG for transparency</li>
-                </ul>
+                <div class="preview-box">
+                    <h3>Result</h3>
+                    <div class="preview-img-container">
+                        <img id="resultPreview" class="preview-img" src="" alt="Processed Image">
+                    </div>
+                    <a id="downloadLink" class="btn" href="#" download style="display: none;">
+                        Download Image
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2>How It Works</h2>
-            <p>Remove backgrounds in just 3 simple steps</p>
-            
-            <div class="steps">
-                <div class="step slide-up" style="animation-delay: 0.1s;">
-                    <div class="step-number">1</div>
-                    <h3>Upload Image</h3>
-                    <p>Drag & drop your image or click to browse files from your device</p>
-                </div>
-                <div class="step slide-up" style="animation-delay: 0.3s;">
-                    <div class="step-number">2</div>
-                    <h3>AI Processing</h3>
-                    <p>Our advanced AI automatically detects and removes the background</p>
-                </div>
-                <div class="step slide-up" style="animation-delay: 0.5s;">
-                    <div class="step-number">3</div>
-                    <h3>Download Result</h3>
-                    <p>Get your image with transparent background in high quality PNG format</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2>What Our Users Say</h2>
-            
-            <div class="testimonial-cards">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-text">
-                        This tool saved me hours of work! As an eBay seller, I need to remove backgrounds from hundreds of product images. The quality is amazing and it's completely free.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user" style="font-size: 2rem; color: #4361ee; margin: 0.5rem;"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>eBay Power Seller</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="testimonial-text">
-                        I've tried many background removers but this one gives the cleanest edges, especially with hair. It's now my go-to tool for all my portrait photography work.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user" style="font-size: 2rem; color: #4361ee; margin: 0.5rem;"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Professional Photographer</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in" style="animation-delay: 0.4s;">
-                    <div class="testimonial-text">
-                        Perfect for creating marketing materials! The quality is professional-grade and it's so easy to use. My whole team uses it daily for our social media graphics.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user" style="font-size: 2rem; color: #4361ee; margin: 0.5rem;"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>David Rodriguez</h4>
-                            <p>Marketing Director</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Bottom Ad Banner -->
-    <div class="container">
-        <div class="ad-banner-bottom fade-in">
-            <p>Advertisement Space</p>
-        </div>
-    </div>
-    
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is this tool really free to use?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes! Our background removal service is completely free with no hidden charges or limitations. Use it as much as you need!</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What image formats do you support?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>We support all common image formats including JPG, PNG, JPEG, and WEBP. The processed images are always downloaded as PNG to preserve transparency.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is there a file size limit?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>No! Unlike other services, we don't impose any file size limits. Process images of any size completely free.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How do you handle my uploaded images?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Your privacy is important to us. All images are processed in memory and automatically deleted from our servers after processing. We never use your images for any other purpose.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I use this for commercial projects?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely! You retain full rights to all images you process with our tool. Feel free to use them in any personal or commercial projects without restrictions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>BG Remover Pro</h3>
-                    <p>The most advanced free online tool for automatic background removal. Fast, accurate, and easy to use for everyone.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">API Documentation</a></li>
-                        <li><a href="#">Help Center</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">DMCA</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 BG Remover Pro. All rights reserved.</p>
-            </div>
+            <p>© 2023 Free Background Remover Tool - No limits, no payments required</p>
         </div>
     </footer>
-    
+
+    <!-- TensorFlow.js and BodyPix for client-side processing -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0.0"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-            });
-            
-            // FAQ accordion
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                });
-            });
-            
-            // Background Remover Tool Functionality
+            // DOM Elements
             const fileInput = document.getElementById('fileInput');
             const dropZone = document.getElementById('dropZone');
-            const selectedFileName = document.getElementById('selectedFileName');
             const processBtn = document.getElementById('processBtn');
             const loader = document.getElementById('loader');
-            const progressContainer = document.getElementById('progressContainer');
-            const progressBar = document.getElementById('progressBar');
             const previewSection = document.getElementById('previewSection');
             const originalPreview = document.getElementById('originalPreview');
-            const apiPreview = document.getElementById('apiPreview');
             const resultPreview = document.getElementById('resultPreview');
             const downloadLink = document.getElementById('downloadLink');
-            const sharpnessSlider = document.getElementById('sharpnessSlider');
-            const saturationSlider = document.getElementById('saturationSlider');
-            
-            const API_KEY = "MSQoUvrzSHHwEQs6CLcYrRJr";
-            const API_URL = "https://api.remove.bg/v1.0/removebg";
+            const statusMessage = document.getElementById('statusMessage');
             
             let originalImageData = null;
-            let currentProcessedImage = null;
-            let enhancementTimeout = null;
+            let net = null;
             
-            // Handle file selection
+            // Initialize TensorFlow.js model
+            async function initializeModel() {
+                try {
+                    statusMessage.textContent = "Loading AI model... (this may take a moment)";
+                    statusMessage.className = "status-message";
+                    statusMessage.style.display = "block";
+                    
+                    // Load BodyPix model
+                    net = await bodyPix.load({
+                        architecture: 'MobileNetV1',
+                        outputStride: 16,
+                        multiplier: 0.75,
+                        quantBytes: 2
+                    });
+                    
+                    statusMessage.textContent = "Model loaded successfully! Ready to process images.";
+                    statusMessage.className = "status-message success";
+                } catch (error) {
+                    console.error("Model loading error:", error);
+                    statusMessage.textContent = "Error loading AI model. Please refresh the page.";
+                    statusMessage.className = "status-message error";
+                }
+            }
+            
+            // Initialize when page loads
+            initializeModel();
+            
+            // File selection handlers
             dropZone.addEventListener('click', () => fileInput.click());
             
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
-                dropZone.classList.add('active');
+                dropZone.style.borderColor = var(--accent);
             });
             
             dropZone.addEventListener('dragleave', () => {
-                dropZone.classList.remove('active');
+                dropZone.style.borderColor = var(--light-gray);
             });
             
             dropZone.addEventListener('drop', (e) => {
                 e.preventDefault();
-                dropZone.classList.remove('active');
+                dropZone.style.borderColor = var(--light-gray);
                 if (e.dataTransfer.files.length) {
                     fileInput.files = e.dataTransfer.files;
                     handleFileSelect(e.dataTransfer.files[0]);
@@ -1328,284 +351,108 @@
                 }
             });
             
-            processBtn.addEventListener('click', processImage);
-            
-            // Real-time enhancement controls
-            sharpnessSlider.addEventListener('input', applyImageEnhancements);
-            saturationSlider.addEventListener('input', applyImageEnhancements);
-            
             function handleFileSelect(file) {
                 if (!file.type.match('image.*')) {
-                    showAlert('Please select an image file (JPG, PNG, JPEG)');
+                    showStatus("Please select an image file (JPG, PNG, JPEG)", "error");
                     return;
                 }
                 
-                // Show selected file name
-                selectedFileName.textContent = `Selected: ${file.name}`;
-                selectedFileName.style.display = 'block';
-                
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    originalPreview.src = e.target.result;
                     originalImageData = e.target.result;
+                    originalPreview.src = originalImageData;
                     processBtn.disabled = false;
-                    apiPreview.src = '';
-                    resultPreview.src = '';
-                    downloadLink.style.display = 'none';
-                    previewSection.style.display = 'none';
+                    previewSection.style.display = "none";
+                    downloadLink.style.display = "none";
+                    showStatus("Image loaded successfully. Click 'Remove Background' to process.", "success");
                 };
                 reader.readAsDataURL(file);
             }
             
-            async function processImage() {
+            // Process image button
+            processBtn.addEventListener('click', async () => {
                 if (!originalImageData) return;
                 
-                processBtn.disabled = true;
-                loader.style.display = 'block';
-                progressContainer.style.display = 'block';
-                previewSection.style.display = 'block';
-                
-                // Simulate progress for better UX
-                simulateProgress();
-                
                 try {
-                    // Step 1: Call remove.bg API
-                    const blob = await fetch(originalImageData).then(r => r.blob());
-                    const formData = new FormData();
-                    formData.append('image_file', blob);
-                    formData.append('size', 'auto');
+                    processBtn.disabled = true;
+                    loader.style.display = "block";
+                    previewSection.style.display = "none";
+                    showStatus("Processing image... Please wait", "");
                     
-                    const apiResponse = await fetch(API_URL, {
-                        method: 'POST',
-                        headers: {
-                            'X-Api-Key': API_KEY
-                        },
-                        body: formData
-                    });
+                    // Process the image
+                    const resultUrl = await removeBackground(originalImageData);
                     
-                    if (!apiResponse.ok) {
-                        const errorData = await apiResponse.json();
-                        throw new Error(errorData.errors ? errorData.errors[0].title : 'API request failed');
-                    }
-                    
-                    const apiBlob = await apiResponse.blob();
-                    const apiImageUrl = URL.createObjectURL(apiBlob);
-                    apiPreview.src = apiImageUrl;
-                    
-                    // Step 2: Enhance quality with improved edge handling
-                    const resultDataUrl = await enhanceWithSmoothEdges(originalImageData, apiImageUrl);
-                    resultPreview.src = resultDataUrl;
-                    currentProcessedImage = resultDataUrl;
-                    downloadLink.href = resultDataUrl;
-                    downloadLink.download = 'removed_bg_' + fileInput.files[0].name.replace(/\.[^/.]+$/, '') + '.png';
-                    downloadLink.style.display = 'inline-block';
-                    
-                    // Reset enhancement controls
-                    sharpnessSlider.value = 100;
-                    saturationSlider.value = 100;
-                    
-                    // Track successful conversion (for analytics)
-                    trackConversion();
-                    
+                    // Display results
+                    resultPreview.src = resultUrl;
+                    downloadLink.href = resultUrl;
+                    downloadLink.download = 'no_bg_' + Date.now() + '.png';
+                    previewSection.style.display = "flex";
+                    downloadLink.style.display = "inline-block";
+                    showStatus("Background removed successfully!", "success");
                 } catch (error) {
-                    console.error('Error:', error);
-                    showAlert('Error: ' + error.message);
+                    console.error("Processing error:", error);
+                    showStatus("Error processing image: " + error.message, "error");
                 } finally {
-                    loader.style.display = 'none';
-                    progressContainer.style.display = 'none';
+                    loader.style.display = "none";
                     processBtn.disabled = false;
                 }
-            }
+            });
             
-            function applyImageEnhancements() {
-                if (!currentProcessedImage) return;
-                
-                // Debounce to prevent too many rapid updates
-                clearTimeout(enhancementTimeout);
-                enhancementTimeout = setTimeout(() => {
-                    const sharpnessValue = parseInt(sharpnessSlider.value) / 100;
-                    const saturationValue = parseInt(saturationSlider.value) / 100;
-                    
-                    const img = new Image();
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        const ctx = canvas.getContext('2d');
-                        
-                        // Draw original processed image
-                        ctx.drawImage(img, 0, 0);
-                        
-                        // Apply sharpness
-                        if (sharpnessValue !== 1) {
-                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                            const data = imageData.data;
+            // Background removal function
+            async function removeBackground(imageData) {
+                return new Promise(async (resolve, reject) => {
+                    try {
+                        const img = new Image();
+                        img.onload = async function() {
+                            // Segment person from background
+                            const segmentation = await net.segmentPerson(img, {
+                                flipHorizontal: false,
+                                internalResolution: 'medium',
+                                segmentationThreshold: 0.7
+                            });
                             
-                            // Simple sharpening algorithm
-                            for (let i = 0; i < data.length; i += 4) {
-                                // For each pixel, compare with neighbors and adjust based on sharpness
-                                if (i > 4 && i < data.length - 4) {
-                                    const rDiff = Math.abs(data[i] - data[i-4]);
-                                    const gDiff = Math.abs(data[i+1] - data[i-3]);
-                                    const bDiff = Math.abs(data[i+2] - data[i-2]);
-                                    const diff = (rDiff + gDiff + bDiff) / 3;
-                                    
-                                    const factor = diff * (sharpnessValue - 1) * 0.1;
-                                    data[i] = Math.min(255, Math.max(0, data[i] + factor));
-                                    data[i+1] = Math.min(255, Math.max(0, data[i+1] + factor));
-                                    data[i+2] = Math.min(255, Math.max(0, data[i+2] + factor));
-                                }
-                            }
-                            ctx.putImageData(imageData, 0, 0);
-                        }
-                        
-                        // Apply saturation
-                        if (saturationValue !== 1) {
-                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                            const data = imageData.data;
-                            
-                            for (let i = 0; i < data.length; i += 4) {
-                                const r = data[i];
-                                const g = data[i+1];
-                                const b = data[i+2];
-                                const gray = 0.2989 * r + 0.5870 * g + 0.1140 * b; // Grayscale conversion
-                                
-                                data[i] = Math.min(255, gray + (r - gray) * saturationValue);
-                                data[i+1] = Math.min(255, gray + (g - gray) * saturationValue);
-                                data[i+2] = Math.min(255, gray + (b - gray) * saturationValue);
-                            }
-                            ctx.putImageData(imageData, 0, 0);
-                        }
-                        
-                        // Update the preview and download link
-                        const enhancedDataUrl = canvas.toDataURL('image/png');
-                        resultPreview.src = enhancedDataUrl;
-                        downloadLink.href = enhancedDataUrl;
-                    };
-                    img.src = currentProcessedImage;
-                }, 100);
-            }
-            
-            function simulateProgress() {
-                let width = 0;
-                const interval = setInterval(() => {
-                    if (width >= 90) {
-                        clearInterval(interval);
-                        return;
-                    }
-                    width += Math.random() * 10;
-                    progressBar.style.width = Math.min(width, 90) + '%';
-                }, 300);
-                
-                // Complete progress bar when done
-                setTimeout(() => {
-                    progressBar.style.width = '100%';
-                }, 2000);
-            }
-            
-            function enhanceWithSmoothEdges(originalDataUrl, apiDataUrl) {
-                return new Promise((resolve) => {
-                    const originalImg = new Image();
-                    const apiImg = new Image();
-                    
-                    originalImg.onload = function() {
-                        apiImg.onload = function() {
+                            // Create canvas for processing
                             const canvas = document.createElement('canvas');
-                            const resultCanvas = document.createElement('canvas');
-                            canvas.width = originalImg.width;
-                            canvas.height = originalImg.height;
-                            resultCanvas.width = originalImg.width;
-                            resultCanvas.height = originalImg.height;
-                            
-                            // Get API mask
+                            canvas.width = img.width;
+                            canvas.height = img.height;
                             const ctx = canvas.getContext('2d');
-                            ctx.drawImage(apiImg, 0, 0, canvas.width, canvas.height);
-                            const apiData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                             
-                            // Create refined mask with smooth edges
-                            const refinedMask = createRefinedMask(apiData);
+                            // Draw original image
+                            ctx.drawImage(img, 0, 0);
                             
-                            // Apply to original image
-                            const resultCtx = resultCanvas.getContext('2d');
-                            resultCtx.drawImage(originalImg, 0, 0);
-                            const resultData = resultCtx.getImageData(0, 0, canvas.width, canvas.height);
+                            // Get image data
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            const data = imageData.data;
                             
-                            for (let i = 0; i < resultData.data.length; i += 4) {
-                                resultData.data[i+3] = refinedMask[i/4];
-                            }
-                            
-                            resultCtx.putImageData(resultData, 0, 0);
-                            resolve(resultCanvas.toDataURL('image/png'));
-                        };
-                        apiImg.src = apiDataUrl;
-                    };
-                    originalImg.src = originalDataUrl;
-                });
-            }
-            
-            function createRefinedMask(apiImageData) {
-                const width = apiImageData.width;
-                const height = apiImageData.height;
-                const mask = new Uint8Array(width * height);
-                
-                // First pass: extract alpha channel
-                for (let i = 0; i < apiImageData.data.length; i += 4) {
-                    mask[i/4] = apiImageData.data[i+3];
-                }
-                
-                // Second pass: smooth edges
-                for (let y = 1; y < height - 1; y++) {
-                    for (let x = 1; x < width - 1; x++) {
-                        const idx = y * width + x;
-                        if (mask[idx] > 0 && mask[idx] < 255) {
-                            // Edge pixel - blend with neighbors
-                            let sum = 0;
-                            let count = 0;
-                            for (let dy = -1; dy <= 1; dy++) {
-                                for (let dx = -1; dx <= 1; dx++) {
-                                    const nIdx = (y + dy) * width + (x + dx);
-                                    sum += mask[nIdx];
-                                    count++;
+                            // Apply transparency to background
+                            for (let i = 0; i < segmentation.data.length; i++) {
+                                // If pixel is not part of person (value 0), make transparent
+                                if (segmentation.data[i] === 0) {
+                                    data[i * 4 + 3] = 0; // Set alpha to 0
                                 }
                             }
-                            mask[idx] = Math.round(sum / count);
-                        }
-                    }
-                }
-                
-                return mask;
-            }
-            
-            function showAlert(message) {
-                // In a real app, you might use a more sophisticated notification system
-                alert(message);
-            }
-            
-            function trackConversion() {
-                // In a real app, you would send this to your analytics platform
-                console.log('Conversion tracked: Background removed');
-            }
-            
-            // Animate elements when they come into view
-            const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.slide-up, .fade-in');
-                
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementPosition < windowHeight - 100) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
+                            
+                            // Put modified data back
+                            ctx.putImageData(imageData, 0, 0);
+                            
+                            // Return as PNG data URL
+                            resolve(canvas.toDataURL('image/png'));
+                        };
+                        
+                        img.onerror = reject;
+                        img.src = imageData;
+                    } catch (error) {
+                        reject(error);
                     }
                 });
-            };
+            }
             
-            // Initial check in case elements are already in view
-            animateOnScroll();
-            
-            // Check on scroll
-            window.addEventListener('scroll', animateOnScroll);
+            // Helper function to show status messages
+            function showStatus(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = "status-message " + type;
+                statusMessage.style.display = "block";
+            }
         });
     </script>
 </body>
