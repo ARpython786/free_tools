@@ -1,9 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- SEO Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Background Remover Tool - No Limits</title>
+    <meta name="description" content="Free unlimited background remover tool - Remove image backgrounds instantly with AI. No credit limits, no watermarks, works 100% in your browser.">
+    <meta name="keywords" content="background remover, remove bg, transparent background, free image editor, AI photo editor">
+    <meta name="author" content="BG Remover Pro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Unlimited Background Remover Tool">
+    <meta property="og:description" content="Remove backgrounds from images automatically with perfect precision. No registration required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bgremoverpro.com">
+    <meta property="og:image" content="https://bgremoverpro.com/preview.jpg">
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="New York">
+    <meta name="geo.position" content="40.7128;-74.0060">
+    <meta name="ICBM" content="40.7128, -74.0060">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂️</text></svg>">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bgremoverpro.com">
+    
+    <title>Free Unlimited Background Remover Tool | Remove BG from Images Instantly</title>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Background Remover Pro",
+      "url": "https://bgremoverpro.com",
+      "description": "Free unlimited online tool to remove backgrounds from images automatically",
+      "applicationCategory": "ImageEditor",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "BG Remover Pro"
+      }
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #4361ee;
@@ -16,6 +65,7 @@
             --light-gray: #e9ecef;
             --success: #4bb543;
             --danger: #f44336;
+            --warning: #ff9800;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
@@ -29,7 +79,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: #f5f7ff;
@@ -43,6 +93,7 @@
             padding: 0 20px;
         }
         
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -59,6 +110,7 @@
         }
         
         .logo {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
             display: flex;
@@ -70,6 +122,7 @@
             font-size: 2rem;
         }
         
+        /* Hero Section */
         .hero {
             text-align: center;
             padding: 3rem 0 2rem;
@@ -80,15 +133,29 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--dark);
+            font-weight: 700;
         }
         
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Main Tool Container */
         .tool-container {
             background: white;
             border-radius: 12px;
             padding: 2rem;
             box-shadow: var(--shadow-sm);
             margin: 2rem auto;
-            max-width: 800px;
+            max-width: 900px;
+            transition: var(--transition);
+        }
+        
+        .tool-container:hover {
+            box-shadow: var(--shadow-lg);
         }
         
         .upload-area {
@@ -99,13 +166,40 @@
             margin-bottom: 2rem;
             cursor: pointer;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
         
         .upload-area:hover {
             border-color: var(--accent);
+            background-color: rgba(72, 149, 239, 0.05);
         }
         
+        .upload-area.active {
+            border-color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .selected-file {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            display: none;
+        }
+        
+        /* Buttons */
         .btn {
+            display: inline-block;
             background-color: var(--primary);
             color: white;
             padding: 12px 24px;
@@ -113,25 +207,52 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
             transition: var(--transition);
-            display: inline-block;
-            margin-top: 1rem;
+            text-decoration: none;
+            margin: 0.5rem 0;
         }
         
         .btn:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .btn:disabled {
             background-color: var(--gray);
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Preview Section */
+        .preview-section {
+            margin-top: 2rem;
         }
         
         .preview-container {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             justify-content: center;
         }
         
@@ -145,7 +266,14 @@
             text-align: center;
         }
         
+        .preview-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
         .preview-img-container {
+            position: relative;
             width: 100%;
             height: 300px;
             background: 
@@ -155,7 +283,6 @@
             background-position: 0 0, 10px 10px;
             border-radius: 4px;
             overflow: hidden;
-            position: relative;
         }
         
         .preview-img {
@@ -168,6 +295,7 @@
             background-color: white;
         }
         
+        /* Loader */
         .loader {
             border: 4px solid rgba(67, 97, 238, 0.1);
             border-top: 4px solid var(--primary);
@@ -184,108 +312,390 @@
             100% { transform: rotate(360deg); }
         }
         
+        /* Status Messages */
         .status-message {
+            padding: 1rem;
             margin: 1rem 0;
-            padding: 0.5rem;
             border-radius: 4px;
             text-align: center;
             display: none;
         }
         
-        .success {
+        .status-success {
             background-color: rgba(75, 181, 67, 0.2);
             color: var(--success);
         }
         
-        .error {
+        .status-error {
             background-color: rgba(244, 67, 54, 0.2);
             color: var(--danger);
         }
         
+        .status-warning {
+            background-color: rgba(255, 152, 0, 0.2);
+            color: var(--warning);
+        }
+        
+        /* Enhancement Controls */
+        .enhancement-controls {
+            margin-top: 15px;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+        
+        .control-group {
+            margin-bottom: 1rem;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .slider-value {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
-            padding: 2rem 0;
-            text-align: center;
+            padding: 3rem 0 1.5rem;
             margin-top: 3rem;
         }
         
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+            }
+            
             .preview-box {
                 min-width: 100%;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tool-container {
+                padding: 1.5rem;
+            }
+            
+            .upload-area {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">
                 <span class="logo-icon">✂️</span>
-                <span>Free BG Remover</span>
+                <span>BG Remover Pro</span>
             </div>
         </div>
     </header>
     
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Remove Backgrounds for Free</h1>
-            <p>No credit limits - No API keys - Works entirely in your browser</p>
+            <h1 class="slide-up">Remove Backgrounds Instantly</h1>
+            <p class="slide-up">Our AI-powered tool removes backgrounds automatically with perfect precision. No limits, no payments - 100% free forever.</p>
         </div>
     </section>
     
+    <!-- Main Tool -->
     <div class="container">
-        <div class="tool-container">
+        <div class="tool-container fade-in">
             <div class="upload-area" id="dropZone">
+                <i class="fas fa-cloud-upload-alt"></i>
                 <h3>Upload Your Image</h3>
                 <p>Drag & drop your image here or click to browse files</p>
                 <p>Supports: JPG, PNG, JPEG</p>
+                <div class="selected-file" id="selectedFileName"></div>
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
             </div>
             
             <div id="statusMessage" class="status-message"></div>
             
-            <button id="processBtn" class="btn" disabled>
-                Remove Background
+            <button id="processBtn" class="btn btn-block" disabled>
+                <i class="fas fa-magic"></i> Remove Background
             </button>
             
             <div class="loader" id="loader"></div>
             
-            <div class="preview-container" id="previewSection" style="display: none;">
-                <div class="preview-box">
-                    <h3>Original Image</h3>
-                    <div class="preview-img-container">
-                        <img id="originalPreview" class="preview-img" src="" alt="Original Image">
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3>Your Results</h3>
+                <div class="preview-container">
+                    <div class="preview-box">
+                        <h3>Original Image</h3>
+                        <div class="preview-img-container">
+                            <img id="originalPreview" class="preview-img" src="" alt="Original Image">
+                        </div>
                     </div>
-                </div>
-                <div class="preview-box">
-                    <h3>Result</h3>
-                    <div class="preview-img-container">
-                        <img id="resultPreview" class="preview-img" src="" alt="Processed Image">
+                    <div class="preview-box">
+                        <h3>Background Removed</h3>
+                        <div class="preview-img-container">
+                            <img id="resultPreview" class="preview-img" src="" alt="Processed Image">
+                        </div>
+                        <div class="enhancement-controls">
+                            <div class="control-group">
+                                <label for="sharpnessSlider">Sharpness</label>
+                                <div class="slider-container">
+                                    <input type="range" id="sharpnessSlider" class="slider" min="0" max="200" value="100">
+                                    <span id="sharpnessValue" class="slider-value">100</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="saturationSlider">Color Saturation</label>
+                                <div class="slider-container">
+                                    <input type="range" id="saturationSlider" class="slider" min="0" max="200" value="100">
+                                    <span id="saturationValue" class="slider-value">100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a id="downloadLink" class="btn btn-outline" style="display: none; margin-top: 15px;" href="#" download>
+                            <i class="fas fa-download"></i> Download PNG
+                        </a>
                     </div>
-                    <a id="downloadLink" class="btn" href="#" download style="display: none;">
-                        Download Image
-                    </a>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step slide-up" style="animation-delay: 0.1s;">
+                    <div class="step-number">1</div>
+                    <h3>Upload Image</h3>
+                    <p>Select or drag & drop your image into the tool</p>
+                </div>
+                <div class="step slide-up" style="animation-delay: 0.3s;">
+                    <div class="step-number">2</div>
+                    <h3>AI Processing</h3>
+                    <p>Our advanced AI automatically removes the background</p>
+                </div>
+                <div class="step slide-up" style="animation-delay: 0.5s;">
+                    <div class="step-number">3</div>
+                    <h3>Download Result</h3>
+                    <p>Get your image with transparent background instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2023 Free Background Remover Tool - No limits, no payments required</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>BG Remover Pro</h3>
+                    <p>The most advanced free online tool for automatic background removal.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 BG Remover Pro. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    
     <!-- TensorFlow.js and BodyPix for client-side processing -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0.0"></script>
-
+    
+    <!-- Main Application Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // DOM Elements
             const fileInput = document.getElementById('fileInput');
             const dropZone = document.getElementById('dropZone');
+            const selectedFileName = document.getElementById('selectedFileName');
             const processBtn = document.getElementById('processBtn');
             const loader = document.getElementById('loader');
             const previewSection = document.getElementById('previewSection');
@@ -293,18 +703,27 @@
             const resultPreview = document.getElementById('resultPreview');
             const downloadLink = document.getElementById('downloadLink');
             const statusMessage = document.getElementById('statusMessage');
+            const sharpnessSlider = document.getElementById('sharpnessSlider');
+            const saturationSlider = document.getElementById('saturationSlider');
+            const sharpnessValue = document.getElementById('sharpnessValue');
+            const saturationValue = document.getElementById('saturationValue');
             
+            // Variables
             let originalImageData = null;
+            let processedImageData = null;
             let net = null;
+            let isModelLoading = false;
+            let isProcessing = false;
             
-            // Initialize TensorFlow.js model
+            // Initialize the AI model
             async function initializeModel() {
+                if (net || isModelLoading) return;
+                
+                isModelLoading = true;
+                showStatus("Loading AI model... (this may take a moment on first use)", "status-warning");
+                
                 try {
-                    statusMessage.textContent = "Loading AI model... (this may take a moment)";
-                    statusMessage.className = "status-message";
-                    statusMessage.style.display = "block";
-                    
-                    // Load BodyPix model
+                    // Load BodyPix model with optimized settings
                     net = await bodyPix.load({
                         architecture: 'MobileNetV1',
                         outputStride: 16,
@@ -312,16 +731,16 @@
                         quantBytes: 2
                     });
                     
-                    statusMessage.textContent = "Model loaded successfully! Ready to process images.";
-                    statusMessage.className = "status-message success";
+                    showStatus("AI model loaded successfully! Ready to process images.", "status-success");
+                    isModelLoading = false;
                 } catch (error) {
                     console.error("Model loading error:", error);
-                    statusMessage.textContent = "Error loading AI model. Please refresh the page.";
-                    statusMessage.className = "status-message error";
+                    showStatus("Error loading AI model. Please refresh the page.", "status-error");
+                    isModelLoading = false;
                 }
             }
             
-            // Initialize when page loads
+            // Initialize model when page loads
             initializeModel();
             
             // File selection handlers
@@ -329,16 +748,16 @@
             
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
-                dropZone.style.borderColor = var(--accent);
+                dropZone.classList.add('active');
             });
             
             dropZone.addEventListener('dragleave', () => {
-                dropZone.style.borderColor = var(--light-gray);
+                dropZone.classList.remove('active');
             });
             
             dropZone.addEventListener('drop', (e) => {
                 e.preventDefault();
-                dropZone.style.borderColor = var(--light-gray);
+                dropZone.classList.remove('active');
                 if (e.dataTransfer.files.length) {
                     fileInput.files = e.dataTransfer.files;
                     handleFileSelect(e.dataTransfer.files[0]);
@@ -353,93 +772,111 @@
             
             function handleFileSelect(file) {
                 if (!file.type.match('image.*')) {
-                    showStatus("Please select an image file (JPG, PNG, JPEG)", "error");
+                    showStatus("Please select an image file (JPG, PNG, JPEG)", "status-error");
                     return;
                 }
+                
+                // Show selected file name
+                selectedFileName.textContent = `Selected: ${file.name}`;
+                selectedFileName.style.display = 'block';
                 
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     originalImageData = e.target.result;
                     originalPreview.src = originalImageData;
                     processBtn.disabled = false;
-                    previewSection.style.display = "none";
-                    downloadLink.style.display = "none";
-                    showStatus("Image loaded successfully. Click 'Remove Background' to process.", "success");
+                    previewSection.style.display = 'none';
+                    downloadLink.style.display = 'none';
+                    showStatus("Image loaded successfully. Click 'Remove Background' to process.", "status-success");
                 };
                 reader.readAsDataURL(file);
             }
             
             // Process image button
             processBtn.addEventListener('click', async () => {
-                if (!originalImageData) return;
+                if (!originalImageData || isProcessing) return;
                 
                 try {
+                    isProcessing = true;
                     processBtn.disabled = true;
-                    loader.style.display = "block";
-                    previewSection.style.display = "none";
+                    loader.style.display = 'block';
+                    previewSection.style.display = 'none';
                     showStatus("Processing image... Please wait", "");
                     
+                    // Make sure model is loaded
+                    if (!net) {
+                        await initializeModel();
+                        if (!net) throw new Error("AI model failed to load");
+                    }
+                    
                     // Process the image
-                    const resultUrl = await removeBackground(originalImageData);
+                    processedImageData = await removeBackground(originalImageData);
                     
                     // Display results
-                    resultPreview.src = resultUrl;
-                    downloadLink.href = resultUrl;
+                    resultPreview.src = processedImageData;
+                    downloadLink.href = processedImageData;
                     downloadLink.download = 'no_bg_' + Date.now() + '.png';
-                    previewSection.style.display = "flex";
-                    downloadLink.style.display = "inline-block";
-                    showStatus("Background removed successfully!", "success");
+                    previewSection.style.display = 'block';
+                    downloadLink.style.display = 'inline-block';
+                    showStatus("Background removed successfully!", "status-success");
                 } catch (error) {
                     console.error("Processing error:", error);
-                    showStatus("Error processing image: " + error.message, "error");
+                    showStatus("Error processing image: " + error.message, "status-error");
                 } finally {
-                    loader.style.display = "none";
+                    isProcessing = false;
+                    loader.style.display = 'none';
                     processBtn.disabled = false;
                 }
             });
             
-            // Background removal function
+            // Background removal function using TensorFlow.js
             async function removeBackground(imageData) {
                 return new Promise(async (resolve, reject) => {
                     try {
                         const img = new Image();
                         img.onload = async function() {
-                            // Segment person from background
-                            const segmentation = await net.segmentPerson(img, {
-                                flipHorizontal: false,
-                                internalResolution: 'medium',
-                                segmentationThreshold: 0.7
-                            });
-                            
-                            // Create canvas for processing
-                            const canvas = document.createElement('canvas');
-                            canvas.width = img.width;
-                            canvas.height = img.height;
-                            const ctx = canvas.getContext('2d');
-                            
-                            // Draw original image
-                            ctx.drawImage(img, 0, 0);
-                            
-                            // Get image data
-                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                            const data = imageData.data;
-                            
-                            // Apply transparency to background
-                            for (let i = 0; i < segmentation.data.length; i++) {
-                                // If pixel is not part of person (value 0), make transparent
-                                if (segmentation.data[i] === 0) {
-                                    data[i * 4 + 3] = 0; // Set alpha to 0
+                            try {
+                                // Segment person from background
+                                const segmentation = await net.segmentPerson(img, {
+                                    flipHorizontal: false,
+                                    internalResolution: 'medium',
+                                    segmentationThreshold: 0.7
+                                });
+                                
+                                // Create canvas for processing
+                                const canvas = document.createElement('canvas');
+                                canvas.width = img.width;
+                                canvas.height = img.height;
+                                const ctx = canvas.getContext('2d');
+                                
+                                // Draw original image
+                                ctx.drawImage(img, 0, 0);
+                                
+                                // Get image data
+                                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                                const data = imageData.data;
+                                
+                                // Apply transparency to background
+                                for (let i = 0; i < segmentation.data.length; i++) {
+                                    if (segmentation.data[i] === 0) { // Background
+                                        data[i * 4 + 3] = 0; // Set alpha to 0 (transparent)
+                                    }
                                 }
+                                
+                                // Put modified data back
+                                ctx.putImageData(imageData, 0, 0);
+                                
+                                // Apply enhancements based on slider values
+                                applyEnhancements(canvas);
+                                
+                                // Return as PNG data URL
+                                resolve(canvas.toDataURL('image/png'));
+                            } catch (error) {
+                                reject(error);
                             }
-                            
-                            // Put modified data back
-                            ctx.putImageData(imageData, 0, 0);
-                            
-                            // Return as PNG data URL
-                            resolve(canvas.toDataURL('image/png'));
                         };
                         
-                        img.onerror = reject;
+                        img.onerror = () => reject(new Error("Failed to load image"));
                         img.src = imageData;
                     } catch (error) {
                         reject(error);
@@ -447,12 +884,143 @@
                 });
             }
             
-            // Helper function to show status messages
+            // Apply image enhancements based on slider values
+            function applyEnhancements(canvas) {
+                const sharpness = parseInt(sharpnessSlider.value) / 100;
+                const saturation = parseInt(saturationSlider.value) / 100;
+                const ctx = canvas.getContext('2d');
+                
+                // Apply sharpness
+                if (sharpness !== 1) {
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    
+                    // Simple sharpening algorithm
+                    for (let i = 0; i < data.length; i += 4) {
+                        if (i > 4 && i < data.length - 4) {
+                            const rDiff = Math.abs(data[i] - data[i-4]);
+                            const gDiff = Math.abs(data[i+1] - data[i-3]);
+                            const bDiff = Math.abs(data[i+2] - data[i-2]);
+                            const diff = (rDiff + gDiff + bDiff) / 3;
+                            
+                            const factor = diff * (sharpness - 1) * 0.1;
+                            data[i] = Math.min(255, Math.max(0, data[i] + factor));
+                            data[i+1] = Math.min(255, Math.max(0, data[i+1] + factor));
+                            data[i+2] = Math.min(255, Math.max(0, data[i+2] + factor));
+                        }
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+                }
+                
+                // Apply saturation
+                if (saturation !== 1) {
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i];
+                        const g = data[i+1];
+                        const b = data[i+2];
+                        const gray = 0.2989 * r + 0.5870 * g + 0.1140 * b;
+                        
+                        data[i] = Math.min(255, gray + (r - gray) * saturation);
+                        data[i+1] = Math.min(255, gray + (g - gray) * saturation);
+                        data[i+2] = Math.min(255, gray + (b - gray) * saturation);
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+                }
+            }
+            
+            // Slider event listeners for real-time updates
+            sharpnessSlider.addEventListener('input', function() {
+                sharpnessValue.textContent = this.value;
+                if (processedImageData) {
+                    reprocessImageWithEnhancements();
+                }
+            });
+            
+            saturationSlider.addEventListener('input', function() {
+                saturationValue.textContent = this.value;
+                if (processedImageData) {
+                    reprocessImageWithEnhancements();
+                }
+            });
+            
+            // Reprocess image with current enhancement settings
+            async function reprocessImageWithEnhancements() {
+                if (!originalImageData || isProcessing) return;
+                
+                try {
+                    isProcessing = true;
+                    loader.style.display = 'block';
+                    showStatus("Applying enhancements...", "");
+                    
+                    // Create new canvas with original image
+                    const img = new Image();
+                    img.onload = async function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        
+                        // Apply enhancements
+                        applyEnhancements(canvas);
+                        
+                        // Update the result
+                        processedImageData = canvas.toDataURL('image/png');
+                        resultPreview.src = processedImageData;
+                        downloadLink.href = processedImageData;
+                        
+                        loader.style.display = 'none';
+                        isProcessing = false;
+                        showStatus("Enhancements applied successfully!", "status-success");
+                    };
+                    img.src = originalImageData;
+                } catch (error) {
+                    console.error("Enhancement error:", error);
+                    showStatus("Error applying enhancements", "status-error");
+                    isProcessing = false;
+                    loader.style.display = 'none';
+                }
+            }
+            
+            // Show status message
             function showStatus(message, type) {
                 statusMessage.textContent = message;
                 statusMessage.className = "status-message " + type;
                 statusMessage.style.display = "block";
+                
+                // Auto-hide success messages after 5 seconds
+                if (type === "status-success") {
+                    setTimeout(() => {
+                        if (statusMessage.textContent === message) {
+                            statusMessage.style.display = "none";
+                        }
+                    }, 5000);
+                }
             }
+            
+            // Animate elements when they come into view
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.slide-up');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initial check in case elements are already in view
+            animateOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
         });
     </script>
 </body>
